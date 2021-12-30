@@ -8,6 +8,7 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function() {
         var buttonLetter = this.innerHTML;
 
         makeSound(buttonLetter);
+        flashKey(buttonLetter);
       });
     }
 
@@ -16,6 +17,7 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function() {
 
 document.addEventListener("keydown", function(event) {
   makeSound(event.key);
+  flashKey(event.key);
 });
 
 
@@ -60,4 +62,14 @@ function makeSound(key) {
     default:
 
   }
+}
+
+function flashKey(keyFlash) {
+
+    var flash = document.querySelector("." + keyFlash).classList.add("pressed");
+
+    setTimeout(function() {
+      document.querySelector("." + keyFlash).classList.remove("pressed");
+    }, 100);
+
 }
